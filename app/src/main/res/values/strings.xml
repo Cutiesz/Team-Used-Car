@@ -1,0 +1,77 @@
+<resources>
+    <string name="app_name">TeamUsedCar</string>
+    <string name="title_activity_tab_register">TabRegisterActivity</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="login">Log in</string>
+    <string name="register">ลงทะเบียน</string>
+    <string name="email">อีเมล</string>
+    <string name="password">รหัสผ่าน</string>
+    <string name="confirm_password">ยืนยันรหัสผ่าน</string>
+    <string name="shop_name">ชื่อร้าน</string>
+    <string name="owner_name">ชื่อ</string>
+    <string name="owner_surname">นามสกุล</string>
+    <string name="telephone_number">หมายเลขโทรศัพท์</string>
+    <string name="next">ถัดไป</string>
+    <string name="address">ที่อยู่</string>
+    <string name="province">จังหวัด</string>
+    <string name="amphur">อำเภอ</string>
+    <string name="district">ตำบล</string>
+    <string name="postcode">รหัสไปรษณี</string>
+    <string name="bank_account_details">รายละเอียดบัญชีธนาคาร</string>
+
+    <string name="identity_card">Identity Card</string>
+    <string name="house_regirtration">House Registration</string>
+    <string name="vat_registration_certificate">VAT Registration Certificate</string>
+    <string name="storefront">Storefront</string>
+
+    <string name="identity_card_th">บัตรประจำตัวประชาชน</string>
+    <string name="house_regirtration_th">ทะเบียนบ้าน</string>
+    <string name="vat_registration_certificate_th">ทะเบียนภาษีมูลค่าเพิ่ม (ภ.พ.20)</string>
+    <string name="storefront_th">หน้าร้าน</string>
+
+    <string name="showroom">โชว์รูม</string>
+    <string name="tent">เต็นท์</string>
+
+    <string name="car_info">ข้อมูลรถ</string>
+    <string name="car_detailing">Car Detailing</string>
+    <string name="title">Title</string>
+    <string name="miles">Miles</string>
+    <string name="repair_history">Repair History</string>
+
+    <string name="car_detailing_th">รายละเอียดอื่นๆ</string>
+    <string name="title_th">หัวข้อลงขาย</string>
+    <string name="miles_th">เลขไมล์</string>
+    <string name="repair_history_th">ประวัติการซ่อม</string>
+
+    <string name="car_front">Front Car</string>
+    <string name="car_front_left">45 degree tilt car image From front left</string>
+    <string name="car_front_right">45 degree tilt car image From front right</string>
+    <string name="car_back">Back Car</string>
+    <string name="car_engine">Engine</string>
+    <string name="car_beam">Car front beam</string>
+
+    <string name="car_front_th">ถ่ายภาพรถยนต์ด้านหน้าตรง</string>
+    <string name="car_front_left_th">ถ่ายภาพรถยนต์เอียง45องศา จากด้านหน้าซ้าย</string>
+    <string name="car_front_right_th">ถ่ายภาพรถยนต์เอียง45องศา จากด้านหน้าขวา</string>
+    <string name="car_back_th">ถ่ายภาพรถยนต์ด้านหลังตรง</string>
+    <string name="car_engine_th">ถ่ายภาพห้องเครื่องรถยนต์</string>
+    <string name="car_beam_th">ถ่ายภาพคานหน้ารถยนต์</string>
+
+    <string name="car_inner">Car Inner</string>
+    <string name="car_inner_th">ภายในรถยนต์</string>
+
+    <string name="car_doc">Car Document</string>
+    <string name="car_doc_th">ถ่ายภาพเอกสารรถยนต์</string>
+
+    <string name="album_profile">TeamProfile</string>
+    <string name="album_used_car">TeamUsedCar</string>
+    <string name="album_slip">TeamSlip</string>
+
+    <string name="action_refresh">Refresh</string>
+    <string name="action_buy_history">Buy History</string>
+    <string name="action_logout">Log Out</string>
+
+    <!--<string name="webServiceUrlAccount">http://www.8mong.com/WebServices/ws_used_car.asmx/</string>-->
+    <string name="webServiceUrlAccount">http://www.teamusedcar.com/webservices/ws_used_car.asmx/</string>
+</resources>

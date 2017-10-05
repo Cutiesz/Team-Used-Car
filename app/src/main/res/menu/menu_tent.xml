@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.korsolution.kontin.teamusedcar.TabRegisterActivity">
+
+    <item
+        android:id="@+id/action_buy_history"
+        android:icon="@drawable/ic_action_car"
+        app:actionLayout="@layout/feed_update_count_img"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:title="Notification" />
+
+    <item
+        android:id="@+id/action_refresh"
+        android:orderInCategory="100"
+        android:title="@string/action_refresh"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_logout"
+        android:orderInCategory="100"
+        android:title="@string/action_logout"
+        app:showAsAction="never" />
+</menu>

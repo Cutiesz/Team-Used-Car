@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.korsolution.kontin.teamusedcar.AddUsedCar7PhotoDocActivity">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="0dp"
+        android:layout_marginRight="0dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingBottom="2dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="2dp"
+                android:paddingTop="4dp">
+
+                <ImageView
+                    android:id="@+id/imgCarDoc1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:background="@color/Gray"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/imgTakePhotoCarDoc1"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="2dp"
+                    android:alpha="0.7"
+                    android:background="@drawable/circle_background"
+                    android:paddingRight="2dp"
+                    android:src="@drawable/takephoto_black" />
+
+                <TextView
+                    android:id="@+id/txtCarDoc1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="1dp"
+                    android:background="@color/Transparent_Black"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/car_doc_th"
+                    android:textColor="@color/White"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingBottom="2dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="4dp"
+                android:paddingTop="4dp">
+
+                <ImageView
+                    android:id="@+id/imgCarDoc2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:background="@color/Gray"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/imgTakePhotoCarDoc2"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="2dp"
+                    android:alpha="0.7"
+                    android:background="@drawable/circle_background"
+                    android:paddingRight="2dp"
+                    android:src="@drawable/takephoto_black" />
+
+                <TextView
+                    android:id="@+id/txtCarDoc2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="1dp"
+                    android:background="@color/Transparent_Black"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/car_doc_th"
+                    android:textColor="@color/White"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingBottom="2dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="2dp"
+                android:paddingTop="2dp">
+
+                <ImageView
+                    android:id="@+id/imgCarDoc3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:background="@color/Gray"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/imgTakePhotoCarDoc3"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="2dp"
+                    android:alpha="0.7"
+                    android:background="@drawable/circle_background"
+                    android:paddingRight="2dp"
+                    android:src="@drawable/takephoto_black" />
+
+                <TextView
+                    android:id="@+id/txtCarDoc3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="1dp"
+                    android:background="@color/Transparent_Black"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/car_doc_th"
+                    android:textColor="@color/White"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingBottom="2dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="4dp"
+                android:paddingTop="2dp">
+
+                <ImageView
+                    android:id="@+id/imgCarDoc4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:background="@color/Gray"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/imgTakePhotoCarDoc4"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="2dp"
+                    android:alpha="0.7"
+                    android:background="@drawable/circle_background"
+                    android:paddingRight="2dp"
+                    android:src="@drawable/takephoto_black" />
+
+                <TextView
+                    android:id="@+id/txtCarDoc4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="1dp"
+                    android:background="@color/Transparent_Black"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/car_doc_th"
+                    android:textColor="@color/White"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingBottom="4dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="2dp"
+                android:paddingTop="2dp">
+
+                <ImageView
+                    android:id="@+id/imgCarDoc5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:background="@color/Gray"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/imgTakePhotoCarDoc5"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="2dp"
+                    android:alpha="0.7"
+                    android:background="@drawable/circle_background"
+                    android:paddingRight="2dp"
+                    android:src="@drawable/takephoto_black" />
+
+                <TextView
+                    android:id="@+id/txtCarDoc5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="1dp"
+                    android:background="@color/Transparent_Black"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/car_doc_th"
+                    android:textColor="@color/White"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingBottom="4dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="4dp"
+                android:paddingTop="2dp">
+
+                <Button
+                    android:id="@+id/btnNext"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:text="@string/next" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

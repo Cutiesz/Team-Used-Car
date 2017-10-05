@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#F2593A</color>
+    <color name="colorPrimaryDark">#591745</color>
+    <color name="colorAccent">#F2593A</color>
+
+    <color name="Black">#000000</color>
+    <color name="White">#FFFFFF</color>
+    <color name="Red">#FF0000</color>
+    <color name="Green">#00FF00</color>
+    <color name="Blue">#0000FF</color>
+    <color name="Yellow">#FFFF00</color>
+    <color name="Gray">#808080</color>
+
+    <color name="Background">#E0E0E0</color>
+    <color name="title_red">#F2593A</color>
+
+    <color name="Transparent_Black">#50000000</color>
+
+    <color name="TUC_Color">#591745</color>
+    <color name="TUC_Color_1">#F2593A</color>
+
+    <drawable name="pressed_colorBl">#591745</drawable> <!--custom color for pressed state -->
+    <drawable name="normal_color">#F2593A</drawable> <!--transperent color for normal state -->
+
+    <integer-array name="color_array">
+        <item>@color/Red</item>
+        <item>@color/Green</item>
+        <item>@color/Blue</item>
+        <item>@color/Yellow</item>
+    </integer-array>
+</resources>
