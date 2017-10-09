@@ -14,6 +14,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
@@ -22,13 +23,11 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -58,7 +57,6 @@ public class Register6PhotoActivity extends AppCompatActivity {
     private ImageView imgTakePhotoHouseRegistration;
     private ImageView imgTakePhotoVatRegistration;
     private ImageView imgTakePhotoStorefront;
-    private RadioGroup radioGroupSupplyType;
     private Button btnRegister;
 
     private static final int ACTION_TAKE_PHOTO_B = 1;
@@ -192,27 +190,22 @@ public class Register6PhotoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (radioGroupSupplyType.getCheckedRadioButtonId() == -1){
-                    Toast.makeText(getApplicationContext(), "Please Select Type.", Toast.LENGTH_LONG).show();
-                } else {
+                String[][] arrData = PictureProfilePathDB.SelectAll();
+                if (arrData != null) {
+                    String identityCard = arrData[0][1].toString();
+                    String houseRegistration = arrData[0][2].toString();
+                    String vatRegistration = arrData[0][3].toString();
+                    String storefront = arrData[0][4].toString();
 
-                    String[][] arrData = PictureProfilePathDB.SelectAll();
-                    if (arrData != null) {
-                        String identityCard = arrData[0][1].toString();
-                        String houseRegistration = arrData[0][2].toString();
-                        String vatRegistration = arrData[0][3].toString();
-                        String storefront = arrData[0][4].toString();
+                    if (identityCard.equals("0") || houseRegistration.equals("0") || vatRegistration.equals("0") || storefront.equals("0")) {
+                        Toast.makeText(getApplicationContext(), "Please take all photos.", Toast.LENGTH_LONG).show();
+                    } else {
+                        if (isOnline()) {
 
-                        if (identityCard.equals("0") || houseRegistration.equals("0") || vatRegistration.equals("0") || storefront.equals("0")) {
-                            Toast.makeText(getApplicationContext(), "Please take all photos.", Toast.LENGTH_LONG).show();
+                            uploadRegister();
+
                         } else {
-                            if (isOnline()) {
-
-                                uploadRegister();
-
-                            } else {
-                                Toast.makeText(getApplicationContext(), "No internet signal, Please try agian.", Toast.LENGTH_LONG).show();
-                            }
+                            Toast.makeText(getApplicationContext(), "No internet signal, Please try agian.", Toast.LENGTH_LONG).show();
                         }
                     }
                 }

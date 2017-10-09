@@ -219,6 +219,18 @@ public class Register5LocationActivity extends AppCompatActivity implements OnMa
                     if (ActivityCompat.checkSelfPermission(this,
                             android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                         //btnLogin.setEnabled(true);
+
+                        // check permission location
+                        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            //User has previously accepted this permission
+                            if (ActivityCompat.checkSelfPermission(this,
+                                    android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                                mMap.setMyLocationEnabled(true);
+                            }
+                        } else {
+                            //Not in api-23, no need to prompt
+                            mMap.setMyLocationEnabled(true);
+                        }
                     }
                 } else {
                     // permission denied, boo! Disable the
