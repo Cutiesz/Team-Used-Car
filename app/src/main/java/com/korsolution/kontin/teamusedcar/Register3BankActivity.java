@@ -1,10 +1,12 @@
 package com.korsolution.kontin.teamusedcar;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -97,7 +99,7 @@ public class Register3BankActivity extends AppCompatActivity {
                     if (bankAccountNumber.length() > 0) {
                         if (!bank.equals("เลือกธนาคาร")) {
 
-                            String bankCode = "";
+                            /*String bankCode = "";
                             String[][] arrData = BankDB.SelectData(bank);
                             if (arrData != null) {
                                 bankCode = arrData[0][2].toString();
@@ -117,7 +119,9 @@ public class Register3BankActivity extends AppCompatActivity {
                             intent.putExtra("BankAccountName", bankAccountName);
                             intent.putExtra("BankAccountNumber", bankAccountNumber);
                             intent.putExtra("BankCode", bankCode);
-                            startActivity(intent);
+                            startActivity(intent);*/
+
+                            dialogAlertConfirm(bankAccountName, bankAccountNumber, bank);
 
                         } else {
                             Toast.makeText(getApplicationContext(), "กรุณากรอกธนาคาร",Toast.LENGTH_LONG).show();
@@ -131,6 +135,50 @@ public class Register3BankActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void dialogAlertConfirm(final String bankAccountName, final String bankAccountNumber, final String bank){
+        AlertDialog.Builder mDialog = new AlertDialog.Builder(this);
+
+        //mDialog.setTitle("ชื่อบัญชี \"" + bankAccountName + "\" \n เลขที่บัญชี \"" + bankAccountNumber + "\" \n ธนาคาร \"" + bank + "\" ใช่หรือไม่?");
+        mDialog.setMessage("ชื่อบัญชี \"" + bankAccountName + "\" \n เลขที่บัญชี \"" + bankAccountNumber + "\" \n ธนาคาร \"" + bank + "\" \n ยืนยันข้อมูลบัญชีนี้ใช่หรือไม่?");
+        //mDialog.setIcon(R.drawable.ic_action_close);
+        mDialog.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+
+                String bankCode = "";
+                String[][] arrData = BankDB.SelectData(bank);
+                if (arrData != null) {
+                    bankCode = arrData[0][2].toString();
+                }
+
+                Intent intent = new Intent(getApplicationContext(), Register4TypeActivity.class);
+                intent.putExtra("Email", Email);
+                intent.putExtra("ShopName", ShopName);
+                intent.putExtra("OwnerName", OwnerName);
+                intent.putExtra("OwnerSurname", OwnerSurname);
+                intent.putExtra("TelephoneNumber", TelephoneNumber);
+                intent.putExtra("Address", Address);
+                intent.putExtra("Province", Province);
+                intent.putExtra("Amphoe", Amphoe);
+                intent.putExtra("District", District);
+                intent.putExtra("Postcode", Postcode);
+                intent.putExtra("BankAccountName", bankAccountName);
+                intent.putExtra("BankAccountNumber", bankAccountNumber);
+                intent.putExtra("BankCode", bankCode);
+                startActivity(intent);
+
+            }
+        }).setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+
+                //Toast.makeText(getBaseContext(), "Fail", Toast.LENGTH_LONG).show();
+                dialog.dismiss();
+            }
+        });
+        mDialog.show();
     }
 
     public class FeedAsynTask extends AsyncTask<String, Void, String> {

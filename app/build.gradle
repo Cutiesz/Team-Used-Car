@@ -7,8 +7,8 @@ android {
         applicationId "com.korsolution.kontin.teamusedcar"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 16
-        versionName "1.0016"
+        versionCode 18
+        versionName "1.0018"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
