@@ -26,6 +26,7 @@ dependencies {
     })
 
 
+
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:26.+'
@@ -39,9 +40,11 @@ dependencies {
     compile 'co.omise:omise-android:2.3.+'
     compile 'com.anton46:stepsview:0.0.2'
     compile 'com.google.android.gms:play-services-maps:11.0.1'
+    compile 'com.prolificinteractive:material-calendarview:1.4.3'
     testCompile 'junit:junit:4.12'
 
-    compile 'com.prolificinteractive:material-calendarview:1.4.3'
+    //Zoom
+    compile 'com.jsibbold:zoomage:1.1.0'
 }
 
 // ADD THIS AT THE BOTTOM

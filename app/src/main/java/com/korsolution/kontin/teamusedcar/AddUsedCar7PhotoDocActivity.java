@@ -101,7 +101,7 @@ public class AddUsedCar7PhotoDocActivity extends AppCompatActivity {
         StrProperties = getIntent().getStringExtra("StrProperties");
         Title = getIntent().getStringExtra("Title");
         Miles = getIntent().getStringExtra("Miles");
-        CarDetails = getIntent().getStringExtra("CarDetails");
+        CarDetails = getIntent().getStringExtra("CarImages");
         RepairHistory = getIntent().getStringExtra("RepairHistory");
 
         PictureUsedCarPathDB = new PictureUsedCarPathDBClass(this);
@@ -193,7 +193,7 @@ public class AddUsedCar7PhotoDocActivity extends AppCompatActivity {
                 intent.putExtra("CarGearType", CarGearType);
                 intent.putExtra("Title", Title);
                 intent.putExtra("Miles", Miles);
-                intent.putExtra("CarDetails", CarDetails);
+                intent.putExtra("CarImages", CarDetails);
                 intent.putExtra("RepairHistory", RepairHistory);
                 intent.putExtra("CheckList", CheckList);
                 intent.putExtra("StrProperties", StrProperties);

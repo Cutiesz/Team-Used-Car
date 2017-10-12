@@ -242,7 +242,12 @@ public class UsedCarListActivity extends AppCompatActivity {
 
     private void loadData() {
 
-        new FeedAsynTask().execute(strWebServiceUrl + "ListShowRoomCarByOwner", /*"29"*/CustomerId);
+        // type
+        //1 = รถที่พึ่งลงและรถที่กำลังประมูล
+        //2 = รถที่รอชำระเงิน
+        //3 = รถที่ขาย/ประมูลแล้ว
+
+        new FeedAsynTask().execute(strWebServiceUrl + "ListShowRoomCarByOwner", /*"29"*/CustomerId, "1");
     }
 
     public class FeedAsynTask extends AsyncTask<String, Void, String> {
@@ -277,6 +282,7 @@ public class UsedCarListActivity extends AppCompatActivity {
                 // 2. assign post data
                 RequestBody postData = new FormBody.Builder()
                         .add("customerId", params[1])
+                        .add("type", params[2])
                         .build();
 
                 Request request = new Request.Builder()

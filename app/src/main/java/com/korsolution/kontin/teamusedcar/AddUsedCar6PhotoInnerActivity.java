@@ -99,7 +99,7 @@ public class AddUsedCar6PhotoInnerActivity extends AppCompatActivity {
         CarGearType = getIntent().getStringExtra("CarGearType");
         Title = getIntent().getStringExtra("Title");
         Miles = getIntent().getStringExtra("Miles");
-        CarDetails = getIntent().getStringExtra("CarDetails");
+        CarDetails = getIntent().getStringExtra("CarImages");
         RepairHistory = getIntent().getStringExtra("RepairHistory");
         CheckList = getIntent().getStringExtra("CheckList");
         StrProperties = getIntent().getStringExtra("StrProperties");
@@ -193,7 +193,7 @@ public class AddUsedCar6PhotoInnerActivity extends AppCompatActivity {
                 intent.putExtra("CarGearType", CarGearType);
                 intent.putExtra("Title", Title);
                 intent.putExtra("Miles", Miles);
-                intent.putExtra("CarDetails", CarDetails);
+                intent.putExtra("CarImages", CarDetails);
                 intent.putExtra("RepairHistory", RepairHistory);
                 intent.putExtra("CheckList", CheckList);
                 intent.putExtra("StrProperties", StrProperties);

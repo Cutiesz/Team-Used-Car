@@ -85,7 +85,7 @@ public class AddUsedCar3InfoActivity extends AppCompatActivity {
                     intent.putExtra("CarGearType", CarGearType);
                     intent.putExtra("Title", title);
                     intent.putExtra("Miles", miles);
-                    intent.putExtra("CarDetails", carDetail);
+                    intent.putExtra("CarImages", carDetail);
                     intent.putExtra("RepairHistory", repairHistory);
                     startActivity(intent);
                 } else {

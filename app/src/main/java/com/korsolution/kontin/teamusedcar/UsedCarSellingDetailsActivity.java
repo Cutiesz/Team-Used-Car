@@ -6,22 +6,18 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
-import android.media.Image;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,12 +25,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.paginate.Paginate;
+import com.korsolution.kontin.teamusedcar.activity.SlideshowDialogFragment;
 
 import org.json.JSONObject;
 
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -98,7 +93,7 @@ public class UsedCarSellingDetailsActivity extends AppCompatActivity {
 
     private String bidPrice;
 
-    String[] mImages;
+    private String[] mImages;
 
     private CarColorDBClass CarColorDB;
     protected ArrayList<JSONObject> feedDataListColor;
@@ -522,7 +517,10 @@ public class UsedCarSellingDetailsActivity extends AppCompatActivity {
                                                 public void onClick(View view) {
                                                     //Toast.makeText(getApplicationContext(), img45_v1, Toast.LENGTH_LONG).show();
                                                     //dialogAlertViewCarImage(img_front);
-                                                    dialogAlertViewImageCar(0);
+
+                                                    //dialogAlertViewImageCar(0);
+
+                                                    goViewImages(0);
                                                 }
                                             });
                                             imgCar1.setOnClickListener(new View.OnClickListener() {
@@ -530,7 +528,10 @@ public class UsedCarSellingDetailsActivity extends AppCompatActivity {
                                                 public void onClick(View view) {
                                                     //Toast.makeText(getApplicationContext(), img45_v1, Toast.LENGTH_LONG).show();
                                                     //dialogAlertViewCarImage(img45_v1);
-                                                    dialogAlertViewImageCar(1);
+
+                                                    //dialogAlertViewImageCar(1);
+
+                                                    goViewImages(1);
                                                 }
                                             });
                                             imgCar2.setOnClickListener(new View.OnClickListener() {
@@ -538,7 +539,10 @@ public class UsedCarSellingDetailsActivity extends AppCompatActivity {
                                                 public void onClick(View view) {
                                                     //Toast.makeText(getApplicationContext(), img45_v1, Toast.LENGTH_LONG).show();
                                                     //dialogAlertViewCarImage(img45_v2);
-                                                    dialogAlertViewImageCar(2);
+
+                                                    //dialogAlertViewImageCar(2);
+
+                                                    goViewImages(2);
                                                 }
                                             });
                                             imgCar3.setOnClickListener(new View.OnClickListener() {
@@ -546,7 +550,10 @@ public class UsedCarSellingDetailsActivity extends AppCompatActivity {
                                                 public void onClick(View view) {
                                                     //Toast.makeText(getApplicationContext(), img45_v1, Toast.LENGTH_LONG).show();
                                                     //dialogAlertViewCarImage(img_back);
-                                                    dialogAlertViewImageCar(3);
+
+                                                    //dialogAlertViewImageCar(3);
+
+                                                    goViewImages(3);
                                                 }
                                             });
                                             imgCar4.setOnClickListener(new View.OnClickListener() {
@@ -554,7 +561,10 @@ public class UsedCarSellingDetailsActivity extends AppCompatActivity {
                                                 public void onClick(View view) {
                                                     //Toast.makeText(getApplicationContext(), img45_v1, Toast.LENGTH_LONG).show();
                                                     //dialogAlertViewCarImage(img_engine);
-                                                    dialogAlertViewImageCar(4);
+
+                                                    //dialogAlertViewImageCar(4);
+
+                                                    goViewImages(4);
                                                 }
                                             });
                                             imgCar5.setOnClickListener(new View.OnClickListener() {
@@ -562,7 +572,10 @@ public class UsedCarSellingDetailsActivity extends AppCompatActivity {
                                                 public void onClick(View view) {
                                                     //Toast.makeText(getApplicationContext(), img45_v1, Toast.LENGTH_LONG).show();
                                                     //dialogAlertViewCarImage(img_lever);
-                                                    dialogAlertViewImageCar(5);
+
+                                                    //dialogAlertViewImageCar(5);
+
+                                                    goViewImages(5);
                                                 }
                                             });
                                             imgCar6.setOnClickListener(new View.OnClickListener() {
@@ -570,7 +583,10 @@ public class UsedCarSellingDetailsActivity extends AppCompatActivity {
                                                 public void onClick(View view) {
                                                     //Toast.makeText(getApplicationContext(), img45_v1, Toast.LENGTH_LONG).show();
                                                     //dialogAlertViewCarImage(img_inner1);
-                                                    dialogAlertViewImageCar(6);
+
+                                                    //dialogAlertViewImageCar(6);
+
+                                                    goViewImages(6);
                                                 }
                                             });
                                             imgCar7.setOnClickListener(new View.OnClickListener() {
@@ -578,7 +594,10 @@ public class UsedCarSellingDetailsActivity extends AppCompatActivity {
                                                 public void onClick(View view) {
                                                     //Toast.makeText(getApplicationContext(), img45_v1, Toast.LENGTH_LONG).show();
                                                     //dialogAlertViewCarImage(img_inner2);
-                                                    dialogAlertViewImageCar(7);
+
+                                                    //dialogAlertViewImageCar(7);
+
+                                                    goViewImages(7);
                                                 }
                                             });
                                             imgCar8.setOnClickListener(new View.OnClickListener() {
@@ -586,7 +605,10 @@ public class UsedCarSellingDetailsActivity extends AppCompatActivity {
                                                 public void onClick(View view) {
                                                     //Toast.makeText(getApplicationContext(), img45_v1, Toast.LENGTH_LONG).show();
                                                     //dialogAlertViewCarImage(img_inner3);
-                                                    dialogAlertViewImageCar(8);
+
+                                                    //dialogAlertViewImageCar(8);
+
+                                                    goViewImages(8);
                                                 }
                                             });
                                             imgCar9.setOnClickListener(new View.OnClickListener() {
@@ -594,7 +616,10 @@ public class UsedCarSellingDetailsActivity extends AppCompatActivity {
                                                 public void onClick(View view) {
                                                     //Toast.makeText(getApplicationContext(), img45_v1, Toast.LENGTH_LONG).show();
                                                     //dialogAlertViewCarImage(img_inner4);
-                                                    dialogAlertViewImageCar(9);
+
+                                                    //dialogAlertViewImageCar(9);
+
+                                                    goViewImages(9);
                                                 }
                                             });
                                             imgCar10.setOnClickListener(new View.OnClickListener() {
@@ -602,7 +627,10 @@ public class UsedCarSellingDetailsActivity extends AppCompatActivity {
                                                 public void onClick(View view) {
                                                     //Toast.makeText(getApplicationContext(), img45_v1, Toast.LENGTH_LONG).show();
                                                     //dialogAlertViewCarImage(img_inner5);
-                                                    dialogAlertViewImageCar(10);
+
+                                                    //dialogAlertViewImageCar(10);
+
+                                                    goViewImages(10);
                                                 }
                                             });
                                         }
@@ -652,6 +680,18 @@ public class UsedCarSellingDetailsActivity extends AppCompatActivity {
 
             nDialog.dismiss();
         }
+    }
+
+    private void goViewImages(Integer position) {
+
+        Bundle bundle = new Bundle();
+        bundle.putStringArray("mImages", mImages);
+        bundle.putInt("position", position);
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        SlideshowDialogFragment newFragment = SlideshowDialogFragment.newInstance();
+        newFragment.setArguments(bundle);
+        newFragment.show(ft, "slideshow");
     }
 
     public void dialogAlertDepositNotEnough() {

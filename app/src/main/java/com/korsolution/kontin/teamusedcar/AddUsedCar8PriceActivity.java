@@ -104,7 +104,7 @@ public class AddUsedCar8PriceActivity extends AppCompatActivity {
         CarGearType = getIntent().getStringExtra("CarGearType");
         Title = getIntent().getStringExtra("Title");
         Miles = getIntent().getStringExtra("Miles");
-        CarDetails = getIntent().getStringExtra("CarDetails");
+        CarDetails = getIntent().getStringExtra("CarImages");
         RepairHistory = getIntent().getStringExtra("RepairHistory");
         CheckList = getIntent().getStringExtra("CheckList");
         StrProperties = getIntent().getStringExtra("StrProperties");
