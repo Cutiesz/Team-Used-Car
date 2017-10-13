@@ -106,7 +106,11 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".InformPaymentActivity" />
-        <activity android:name=".CalendarViewActivity"></activity>
+        <activity android:name=".CalendarViewActivity" />
+        <activity
+            android:name=".activity.ShowroomTabActivity"
+            android:label="@string/title_activity_showroom_tab"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
