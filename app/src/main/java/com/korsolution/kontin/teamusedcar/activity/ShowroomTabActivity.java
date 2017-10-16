@@ -31,7 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.korsolution.kontin.teamusedcar.AccountDBClass;
-import com.korsolution.kontin.teamusedcar.AddUsedCar1LicensePlateActivity;
+import com.korsolution.kontin.teamusedcar.AddUsedCarYoutubeLinkActivity;
 import com.korsolution.kontin.teamusedcar.CuteFeedJsonUtil;
 import com.korsolution.kontin.teamusedcar.DesiredCarListShowroomActivity;
 import com.korsolution.kontin.teamusedcar.LoginActivity;
@@ -205,7 +205,7 @@ public class ShowroomTabActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getApplicationContext(), AddUsedCar1LicensePlateActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AddUsedCarYoutubeLinkActivity.class);
                 startActivity(intent);
             }
         });

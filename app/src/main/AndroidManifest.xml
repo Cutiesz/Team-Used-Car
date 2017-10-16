@@ -24,6 +24,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".Register1AccountActivity" />
@@ -110,7 +117,8 @@
         <activity
             android:name=".activity.ShowroomTabActivity"
             android:label="@string/title_activity_showroom_tab"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AddUsedCarYoutubeLinkActivity"></activity>
     </application>
 
 </manifest>

@@ -12,6 +12,7 @@
     <string name="owner_name">ชื่อ</string>
     <string name="owner_surname">นามสกุล</string>
     <string name="telephone_number">หมายเลขโทรศัพท์</string>
+    <string name="skip">ข้าม</string>
     <string name="next">ถัดไป</string>
     <string name="address">ที่อยู่</string>
     <string name="province">จังหวัด</string>

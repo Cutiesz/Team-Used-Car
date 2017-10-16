@@ -14,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.korsolution.kontin.teamusedcar.CuteFeedJsonUtil;
@@ -43,6 +44,8 @@ public class ShowroomAuctioningListFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+
+    private TextView txtNoData;
 
     protected ArrayList<JSONObject> feedDataList;
     protected ArrayList<JSONObject> feedDataListUsedCar;
@@ -92,8 +95,8 @@ public class ShowroomAuctioningListFragment extends Fragment {
     private void setupWidgets(View view) {
 
         mRefreshView = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
-
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        txtNoData = (TextView) view.findViewById(R.id.txtNoData);
 
         mRecyclerView.setHasFixedSize(true);
 
@@ -164,6 +167,11 @@ public class ShowroomAuctioningListFragment extends Fragment {
     }
 
     private void loadListUsedCar() {
+
+        // type
+        //1 = รถที่พึ่งลงและรถที่กำลังประมูล
+        //2 = รถที่รอชำระเงิน
+        //3 = รถที่ขาย/ประมูลแล้ว
 
         new FeedAsynTask().execute("http://www.teamusedcar.com/webservices/ws_used_car.asmx/ListShowRoomCarByOwner", "29", "1");
     }
@@ -240,6 +248,12 @@ public class ShowroomAuctioningListFragment extends Fragment {
 
                             String _status = String.valueOf(feedDataListUsedCar.get(i).getString("status"));
                             String data = String.valueOf(feedDataListUsedCar.get(i).getString("data"));
+
+                            if (data.equals("[]")) {
+                                txtNoData.setVisibility(View.VISIBLE);
+                            } else {
+                                txtNoData.setVisibility(View.GONE);
+                            }
 
                             feedDataList = CuteFeedJsonUtil.feed(data);
                             if (feedDataList != null) {
