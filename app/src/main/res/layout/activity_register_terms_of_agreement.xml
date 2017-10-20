@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.korsolution.kontin.teamusedcar.RegisterTermsOfAgreementActivity">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/White"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:padding="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAgree">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            android:text="Terms of agreement"
+            android:textColor="@color/Black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_margin="10dp"
+            android:background="#000000"></LinearLayout>
+
+        <TextView
+            android:id="@+id/txtTermsOfAgreement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/stroke"
+            android:layout_margin="8dp"
+            android:padding="8dp"
+            android:scrollbars="vertical"
+            android:text="นโยบายส่วนบุคคลนี้กำหนดวิธีการที่ Team Auto Sports รวบรวมและใช้ข้อมูลและข้อมูลส่วนบุคคลและข้อมูลที่ไม่ใช่ข้อมูลส่วนบุคคล ของผู้ใช้ในแอปพลิเคชันมือถือของเรา (ใช้ได้กับสมาร์ทโฟนและแท็บเล็ต)
+
+1.Team Auto Sports เคารพในสิทธิความเป็นส่วนตัวของคุณและตระหนักถึงความสำคัญในการปกป้องข้อมูลที่เก็บรวบรวมเกี่ยวกับคุณ
+
+2.Team Auto Sports ไม่รวบรวมข้อมูลผู้ใช้ส่วนบุคคลใด ๆ Team Auto Sports อาจใช้เครื่องมือหรือซอฟต์แวร์การวิเคราะห์ของบุคคลที่สามในการรวบรวมและใช้ข้อมูลส่วนบุคคลที่ไม่ใช่ข้อมูลบางอย่างที่ไม่ได้ช่วยให้เราสามารถระบุตัวตนของคุณได้ (เราติดตามเฉพาะข้อมูลเช่นประเภทอุปกรณ์ซอฟต์แวร์อุปกรณ์เคลื่อนที่ผู้ให้บริการข้อมูล ... )
+
+3.ข้อมูลส่วนบุคคลและช่องทางการติดต่อสื่อสารที่ท่านได้ให้หรือใช้ ผ่านระบบ Team Auto Sports และTeam Auto Sports ได้รวบรวมไว้ทั้งหมดนั้น ท่านยอมรับ อนุญาต และตกลงว่า เป็นสิทธิและกรรมสิทธิของ Team Auto Sports และ Team Auto Sports สามารถใช้ช่องทางในการติดต่อสื่อสารดังกล่าว เพื่อจัดส่งข้อมูลหรือติดต่อสื่อสารกับท่านได้
+
+4.หากท่านประสงค์จะเปลี่ยนแปลงแก้ไขข้อมูลส่วนบุคคลหรือช่องทางการติดต่อสื่อสารในส่วนที่อยู่และหมายเลขโทรศัพท์ ท่านสามารถแก้ไขได้ด้วยตนเองในเมนูข้อมูลส่วนตัว
+
+5.Team Auto Sports มีนโยบายในการเคารพสิทธิในข้อมูลส่วนบุคคลและช่องทางการติดต่อสื่อสารของผู้ใช้บริการ และไม่มีนโยบายในการเผยแพร่หรือส่งต่อข้อมูลดังกล่าวให้กับบุคคล/บริษัท อื่น ดังนั้น Team Auto Sports จะไม่ทำการตรวจสอบ แก้ไข หรือเปิดเผย ข้อมูลดังกล่าว เว้นแต่ Team Auto Sports มีความเชื่อโดยสุจริตว่า เป็นกรณีที่จำเป็นต้องทำการตรวจสอบ แก้ไข หรือเปิดเผยข้อมูลนั้น เพื่อปฏิบัติตามกฎหมาย เพื่อดำเนินกระบวนการทางกฎหมาย เพื่อบังคับให้เป็นไปตามข้อกำหนดและเงื่อนไขในการใช้บริการ Team Auto Sports เพื่อป้องกันสิทธิของ Team Auto Sports หรือเพื่อปกป้องผลประโยชน์ของผู้ใช้บริการอื่น
+
+6.เพื่อความปลอดภัยในข้อมูลส่วนบุคคลและช่องทางการติดต่อสื่อสารของท่าน และเพื่อความเป็นระเบียบเรียบร้อย ท่านต้องปฏิบัติตามข้อกำหนดและเงื่อนไขการใช้บริการ Team Auto Sports โดยเคร่งครัด และท่านตกลงว่า ท่านจะไม่กระทำการใดอันเป็นการล่วงละเมิดสิทธิส่วนบุคคลของบุคคลอื่น
+
+7.ในกรณีที่ข้อมูลส่วนบุคคลและช่องทางการติดต่อสื่อสารของท่านสูญหาย หรือได้รับความเสียหาย ไม่ว่าจะเกิดจากสาเหตุใดๆ ซึ่งรวมถึง การจารกรรมด้วยวิธีการทางอิเล็กทรอนิกส์ (Hack) Team Auto Sports สงวนสิทธิในการปฏิเสธความรับผิดในกรณีดังกล่าว โดยไม่ต้องรับผิดต่อความสูญหายหรือเสียหายใดๆ ที่เกิดขึ้นทั้งสิ้น"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnAgree"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/agree_to_the_terms"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

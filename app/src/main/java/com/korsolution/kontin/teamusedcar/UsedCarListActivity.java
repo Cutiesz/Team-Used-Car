@@ -32,7 +32,6 @@ import android.widget.Toast;
 
 import com.anton46.stepsview.StepsView;
 import com.bumptech.glide.Glide;
-import com.korsolution.kontin.teamusedcar.activity.ShowroomTabActivity;
 import com.paginate.Paginate;
 import com.paginate.abslistview.LoadingListItemCreator;
 
@@ -120,11 +119,6 @@ public class UsedCarListActivity extends AppCompatActivity {
 
         loadData();
         loadShowroomDetails();
-
-        Intent intent = new Intent(getApplicationContext(), ShowroomTabActivity.class);
-        intent.putExtra("UserId", UserId);
-        intent.putExtra("CustomerId", CustomerId);
-        startActivity(intent);
     }
 
     @Override

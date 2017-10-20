@@ -32,6 +32,7 @@ public class AddUsedCar4CheckListActivity extends AppCompatActivity {
     private ListView lvCheckList;
     private Button btnNext;
 
+    private String YoutubeLink;
     private String LicensePlateFront;
     private String LicensePlateBack;
     private String LicensePlateProvince;
@@ -70,6 +71,7 @@ public class AddUsedCar4CheckListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.action_bar_layout);
 
+        YoutubeLink = getIntent().getStringExtra("YoutubeLink");
         LicensePlateFront = getIntent().getStringExtra("LicensePlateFront");
         LicensePlateBack = getIntent().getStringExtra("LicensePlateBack");
         LicensePlateProvince = getIntent().getStringExtra("LicensePlateProvince");
@@ -103,6 +105,7 @@ public class AddUsedCar4CheckListActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent = new Intent(getApplicationContext(), AddUsedCar5PhotoActivity.class);
+                intent.putExtra("YoutubeLink", YoutubeLink);
                 intent.putExtra("LicensePlateFront", LicensePlateFront);
                 intent.putExtra("LicensePlateBack", LicensePlateBack);
                 intent.putExtra("LicensePlateProvince", LicensePlateProvince);

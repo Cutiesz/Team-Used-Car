@@ -5,14 +5,13 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +38,7 @@ public class AddUsedCar2ModelActivity extends AppCompatActivity {
     private TextView txtColorTest;
     private Button btnNext;
 
+    private String YoutubeLink;
     private String LicensePlateFront;
     private String LicensePlateBack;
     private String LicensePlateProvince;
@@ -66,6 +66,7 @@ public class AddUsedCar2ModelActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.action_bar_layout);
 
+        YoutubeLink = getIntent().getStringExtra("YoutubeLink");
         LicensePlateFront = getIntent().getStringExtra("LicensePlateFront");
         LicensePlateBack = getIntent().getStringExtra("LicensePlateBack");
         LicensePlateProvince = getIntent().getStringExtra("LicensePlateProvince");
@@ -178,6 +179,7 @@ public class AddUsedCar2ModelActivity extends AppCompatActivity {
                                 if (!carGearType.equals("เลือกระบบเกียร์")) {
 
                                     Intent intent = new Intent(getApplicationContext(), AddUsedCar3InfoActivity.class);
+                                    intent.putExtra("YoutubeLink", YoutubeLink);
                                     intent.putExtra("LicensePlateFront", LicensePlateFront);
                                     intent.putExtra("LicensePlateBack", LicensePlateBack);
                                     intent.putExtra("LicensePlateProvince", LicensePlateProvince);

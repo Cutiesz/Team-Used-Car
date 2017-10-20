@@ -41,7 +41,14 @@ public class AddUsedCarYoutubeLinkActivity extends AppCompatActivity {
 
         if (valueGetIntent != null) {
             edtYoutubeLink.setText(valueGetIntent);
-            setImgThumbnail(valueGetIntent);
+
+            try {
+
+                setImgThumbnail(valueGetIntent);
+
+            } catch (Exception e) {
+
+            }
         }
     }
 

@@ -8,10 +8,10 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +21,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.paginate.Paginate;
 
 import org.json.JSONObject;
 
@@ -54,6 +53,7 @@ public class AddUsedCar8PriceActivity extends AppCompatActivity {
     private EditText edtPrice;
     private Button btnAddUsedCar;
 
+    private String YoutubeLink;
     private String LicensePlateFront;
     private String LicensePlateBack;
     private String LicensePlateProvince;
@@ -92,6 +92,7 @@ public class AddUsedCar8PriceActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.action_bar_layout);
 
+        YoutubeLink = getIntent().getStringExtra("YoutubeLink");
         LicensePlateFront = getIntent().getStringExtra("LicensePlateFront");
         LicensePlateBack = getIntent().getStringExtra("LicensePlateBack");
         LicensePlateProvince = getIntent().getStringExtra("LicensePlateProvince");
@@ -299,7 +300,7 @@ public class AddUsedCar8PriceActivity extends AppCompatActivity {
                     startPrice, price, CheckList, Miles, RepairHistory, ProvinceID, CarColor, CarGearType,
                     imgStrCarFront, imgStrCarFrontLeft, imgStrCarFrontRight, imgStrCarBack, imgStrCarEngine, imgStrCarBeam,
                     imgStrCarInner1, imgStrCarInner2, imgStrCarInner3, imgStrCarInner4, imgStrCarInner5,
-                    imgStrCarDoc1, imgStrCarDoc2, imgStrCarDoc3, imgStrCarDoc4, imgStrCarDoc5);
+                    imgStrCarDoc1, imgStrCarDoc2, imgStrCarDoc3, imgStrCarDoc4, imgStrCarDoc5, YoutubeLink);
         }
     }
 
@@ -367,6 +368,7 @@ public class AddUsedCar8PriceActivity extends AppCompatActivity {
                         .add("imgDoc3", params[31])
                         .add("imgDoc4", params[32])
                         .add("imgDoc5", params[33])
+                        .add("youtubeUrl", params[34])
                         .build();
 
                 Request request = new Request.Builder()

@@ -1,7 +1,6 @@
 package com.korsolution.kontin.teamusedcar.activity;
 
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -23,6 +22,7 @@ import com.korsolution.kontin.teamusedcar.UsedCarDetailsActivity;
 import com.korsolution.kontin.teamusedcar.adapter.ShowroomUsedCarAdapter;
 import com.paginate.Paginate;
 import com.paginate.abslistview.LoadingListItemCreator;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import org.json.JSONObject;
 
@@ -46,6 +46,8 @@ public class ShowroomAuctionedListFragment extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
 
     private TextView txtNoData;
+
+    private AVLoadingIndicatorView avi;
 
     protected ArrayList<JSONObject> feedDataList;
     protected ArrayList<JSONObject> feedDataListUsedCar;
@@ -86,8 +88,8 @@ public class ShowroomAuctionedListFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        loadListUsedCar();
         setupWidgets(view);
+        loadListUsedCar();
 
         //Toast.makeText(getActivity(), UserId + " " + CustomerId, Toast.LENGTH_LONG).show();
     }
@@ -97,6 +99,8 @@ public class ShowroomAuctionedListFragment extends Fragment {
         mRefreshView = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         txtNoData = (TextView) view.findViewById(R.id.txtNoData);
+
+        avi = (AVLoadingIndicatorView) view.findViewById(R.id.avi);
 
         mRecyclerView.setHasFixedSize(true);
 
@@ -178,18 +182,21 @@ public class ShowroomAuctionedListFragment extends Fragment {
 
     public class FeedAsynTask extends AsyncTask<String, Void, String> {
 
-        private ProgressDialog nDialog;
+        //private ProgressDialog nDialog;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            nDialog = new ProgressDialog(getActivity());
+            /*nDialog = new ProgressDialog(getActivity());
             nDialog.setMessage("Loading..");
             //nDialog.setTitle("Checking Network");
             nDialog.setIndeterminate(false);
             nDialog.setCancelable(true);
-            nDialog.show();
+            nDialog.show();*/
 
+            avi.show();
+            txtNoData.setVisibility(View.VISIBLE);
+            txtNoData.setText("Downloading..");
         }
 
         @Override
@@ -251,6 +258,7 @@ public class ShowroomAuctionedListFragment extends Fragment {
 
                             if (data.equals("[]")) {
                                 txtNoData.setVisibility(View.VISIBLE);
+                                txtNoData.setText("No Data Available");
                             } else {
                                 txtNoData.setVisibility(View.GONE);
                             }
@@ -286,6 +294,8 @@ public class ShowroomAuctionedListFragment extends Fragment {
                                             .build();
 
                                     mIsLoading = false;
+
+                                    txtNoData.setVisibility(View.GONE);
                                 }
                             }
 
@@ -297,9 +307,12 @@ public class ShowroomAuctionedListFragment extends Fragment {
 
             } else {
                 Toast.makeText(getActivity(), "Fail!!", Toast.LENGTH_LONG).show();
+                txtNoData.setVisibility(View.VISIBLE);
+                txtNoData.setText("Load Data Fail!, Please try agian.");
             }
 
-            nDialog.dismiss();
+            //nDialog.dismiss();
+            avi.hide();
         }
     }
 

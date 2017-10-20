@@ -18,6 +18,7 @@ public class AddUsedCar3InfoActivity extends AppCompatActivity {
     private EditText edtRepair;
     private Button btnNext;
 
+    private String YoutubeLink;
     private String LicensePlateFront;
     private String LicensePlateBack;
     private String LicensePlateProvince;
@@ -40,6 +41,7 @@ public class AddUsedCar3InfoActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.action_bar_layout);
 
+        YoutubeLink = getIntent().getStringExtra("YoutubeLink");
         LicensePlateFront = getIntent().getStringExtra("LicensePlateFront");
         LicensePlateBack = getIntent().getStringExtra("LicensePlateBack");
         LicensePlateProvince = getIntent().getStringExtra("LicensePlateProvince");
@@ -73,6 +75,7 @@ public class AddUsedCar3InfoActivity extends AppCompatActivity {
 
                 if (miles.length() > 0) {
                     Intent intent = new Intent(getApplicationContext(), AddUsedCar4CheckListActivity.class);
+                    intent.putExtra("YoutubeLink", YoutubeLink);
                     intent.putExtra("LicensePlateFront", LicensePlateFront);
                     intent.putExtra("LicensePlateBack", LicensePlateBack);
                     intent.putExtra("LicensePlateProvince", LicensePlateProvince);

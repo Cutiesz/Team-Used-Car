@@ -20,6 +20,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.korsolution.kontin.teamusedcar.activity.ShowroomTabActivity;
+
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -134,7 +136,8 @@ public class LoginActivity extends AppCompatActivity {
         txtRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Register1AccountActivity.class);
+                //Intent intent = new Intent(getApplicationContext(), Register1AccountActivity.class);
+                Intent intent = new Intent(getApplicationContext(), RegisterTermsOfAgreementActivity.class);
                 startActivity(intent);
             }
         });
@@ -271,7 +274,8 @@ public class LoginActivity extends AppCompatActivity {
 
                                                         switch (strSupplierType) {
                                                             case "SHOWROOM":
-                                                                Intent intent = new Intent(getApplicationContext(), UsedCarListActivity.class);
+                                                                //Intent intent = new Intent(getApplicationContext(), UsedCarListActivity.class);
+                                                                Intent intent = new Intent(getApplicationContext(), ShowroomTabActivity.class);
                                                                 intent.putExtra("UserId", _UserId);
                                                                 intent.putExtra("CustomerId", _CustomerId);
                                                                 startActivity(intent);

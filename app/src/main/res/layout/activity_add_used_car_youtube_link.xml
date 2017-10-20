@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="Youtube Link"
+            android:text="เพิ่มลิ้งค์ยูทูบของรถ"
             android:textColor="@color/Black"
             android:textSize="24sp" />
 

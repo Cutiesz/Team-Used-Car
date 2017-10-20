@@ -31,6 +31,8 @@ public class AddUsedCar1LicensePlateActivity extends AppCompatActivity {
     private Spinner spnProvince;
     private Button btnNext;
 
+    private String YoutubeLink;
+
     protected ArrayList<JSONObject> feedDataListProvince;
 
     private ProvinceDBClass ProvinceDB;
@@ -45,6 +47,8 @@ public class AddUsedCar1LicensePlateActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.action_bar_layout);
+
+        YoutubeLink = getIntent().getStringExtra("YoutubeLink");
 
         ProvinceDB = new ProvinceDBClass(this);
 
@@ -78,6 +82,7 @@ public class AddUsedCar1LicensePlateActivity extends AppCompatActivity {
                         }
 
                         Intent intent = new Intent(getApplicationContext(), AddUsedCar2ModelActivity.class);
+                        intent.putExtra("YoutubeLink", YoutubeLink);
                         intent.putExtra("LicensePlateFront", _front);
                         intent.putExtra("LicensePlateBack", _back);
                         intent.putExtra("LicensePlateProvince", _province);

@@ -43,6 +43,7 @@ public class AddUsedCar6PhotoInnerActivity extends AppCompatActivity {
     private ImageView imgTakePhotoCarInner5;
     private Button btnNext;
 
+    private String YoutubeLink;
     private String LicensePlateFront;
     private String LicensePlateBack;
     private String LicensePlateProvince;
@@ -87,6 +88,7 @@ public class AddUsedCar6PhotoInnerActivity extends AppCompatActivity {
             mAlbumStorageDirFactory = new BaseAlbumDirFactory();
         }
 
+        YoutubeLink = getIntent().getStringExtra("YoutubeLink");
         LicensePlateFront = getIntent().getStringExtra("LicensePlateFront");
         LicensePlateBack = getIntent().getStringExtra("LicensePlateBack");
         LicensePlateProvince = getIntent().getStringExtra("LicensePlateProvince");
@@ -181,6 +183,7 @@ public class AddUsedCar6PhotoInnerActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent = new Intent(getApplicationContext(), AddUsedCar7PhotoDocActivity.class);
+                intent.putExtra("YoutubeLink", YoutubeLink);
                 intent.putExtra("LicensePlateFront", LicensePlateFront);
                 intent.putExtra("LicensePlateBack", LicensePlateBack);
                 intent.putExtra("LicensePlateProvince", LicensePlateProvince);

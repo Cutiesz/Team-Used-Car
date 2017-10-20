@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.korsolution.kontin.teamusedcar.activity.ShowroomTabActivity;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -48,16 +50,31 @@ public class MainActivity extends AppCompatActivity {
                     Bundle extras = getIntent().getExtras();
                     if (extras != null) {
                         String valueGetIntent = extras.getString(Intent.EXTRA_TEXT);
-                        Intent intent = new Intent(getApplicationContext(), AddUsedCarYoutubeLinkActivity.class);
-                        intent.putExtra("UserId", UserId);
-                        intent.putExtra("CustomerId", CustomerId);
-                        intent.putExtra("valueGetIntent", valueGetIntent);
-                        startActivity(intent);
+
+                        String MSG = extras.getString("MSG");
+                        if (MSG != null) {
+                            valueGetIntent = MSG;
+                        }
+
+                        if (valueGetIntent.contains("youtu")) {
+
+                            Intent intent = new Intent(getApplicationContext(), AddUsedCarYoutubeLinkActivity.class);
+                            intent.putExtra("UserId", UserId);
+                            intent.putExtra("CustomerId", CustomerId);
+                            intent.putExtra("valueGetIntent", valueGetIntent);
+                            startActivity(intent);
+                        } else {
+
+                            //
+
+                        }
+
                     } else {
 
                         switch (SupplierType) {
                             case "SHOWROOM":
-                                Intent intent = new Intent(getApplicationContext(), UsedCarListActivity.class);
+                                //Intent intent = new Intent(getApplicationContext(), UsedCarListActivity.class);
+                                Intent intent = new Intent(getApplicationContext(), ShowroomTabActivity.class);
                                 intent.putExtra("UserId", UserId);
                                 intent.putExtra("CustomerId", CustomerId);
                                 startActivity(intent);
