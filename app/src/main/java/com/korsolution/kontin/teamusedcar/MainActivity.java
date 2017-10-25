@@ -50,23 +50,65 @@ public class MainActivity extends AppCompatActivity {
                     Bundle extras = getIntent().getExtras();
                     if (extras != null) {
                         String valueGetIntent = extras.getString(Intent.EXTRA_TEXT);
+                        if (valueGetIntent != null) {
+                            String MSG = extras.getString("MSG");
+                            if (MSG != null) {
+                                valueGetIntent = MSG;
+                            }
 
-                        String MSG = extras.getString("MSG");
-                        if (MSG != null) {
-                            valueGetIntent = MSG;
-                        }
+                            if (valueGetIntent.contains("youtu")) {
 
-                        if (valueGetIntent.contains("youtu")) {
+                                switch (SupplierType) {
+                                    case "SHOWROOM":
+                                        Intent intent = new Intent(getApplicationContext(), AddUsedCarYoutubeLinkActivity.class);
+                                        intent.putExtra("UserId", UserId);
+                                        intent.putExtra("CustomerId", CustomerId);
+                                        intent.putExtra("valueGetIntent", valueGetIntent);
+                                        startActivity(intent);
+                                        break;
+                                    case "TENT":
+                                        Intent intent1 = new Intent(getApplicationContext(), UsedCarSellingListActivity.class);
+                                        intent1.putExtra("UserId", UserId);
+                                        intent1.putExtra("CustomerId", CustomerId);
+                                        startActivity(intent1);
+                                        break;
+                                }
 
-                            Intent intent = new Intent(getApplicationContext(), AddUsedCarYoutubeLinkActivity.class);
-                            intent.putExtra("UserId", UserId);
-                            intent.putExtra("CustomerId", CustomerId);
-                            intent.putExtra("valueGetIntent", valueGetIntent);
-                            startActivity(intent);
+                            } else {
+
+                                switch (SupplierType) {
+                                    case "SHOWROOM":
+                                        Intent intent = new Intent(getApplicationContext(), AddUsedCarYoutubeLinkActivity.class);
+                                        intent.putExtra("UserId", UserId);
+                                        intent.putExtra("CustomerId", CustomerId);
+                                        intent.putExtra("valueGetIntent", valueGetIntent);
+                                        startActivity(intent);
+                                        break;
+                                    case "TENT":
+                                        Intent intent1 = new Intent(getApplicationContext(), UsedCarSellingListActivity.class);
+                                        intent1.putExtra("UserId", UserId);
+                                        intent1.putExtra("CustomerId", CustomerId);
+                                        startActivity(intent1);
+                                        break;
+                                }
+
+                            }
                         } else {
-
-                            //
-
+                            switch (SupplierType) {
+                                case "SHOWROOM":
+                                    //Intent intent = new Intent(getApplicationContext(), UsedCarListActivity.class);
+                                    Intent intent = new Intent(getApplicationContext(), ShowroomTabActivity.class);
+                                    intent.putExtra("UserId", UserId);
+                                    intent.putExtra("CustomerId", CustomerId);
+                                    startActivity(intent);
+                                    break;
+                                case "TENT":
+                                    Intent intent1 = new Intent(getApplicationContext(), UsedCarSellingListActivity.class);
+                                    intent1.putExtra("UserId", UserId);
+                                    intent1.putExtra("CustomerId", CustomerId);
+                                    startActivity(intent1);
+                                    break;
+                            }
                         }
 
                     } else {

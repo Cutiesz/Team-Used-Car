@@ -119,7 +119,9 @@
             android:label="@string/title_activity_showroom_tab"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AddUsedCarYoutubeLinkActivity" />
-        <activity android:name=".RegisterTermsOfAgreementActivity"></activity>
+        <activity android:name=".RegisterTermsOfAgreementActivity" />
+        <activity android:name=".activity.NotificationShowroomListActivity" />
+        <activity android:name=".activity.NotificationTentListActivity"></activity>
     </application>
 
 </manifest>
