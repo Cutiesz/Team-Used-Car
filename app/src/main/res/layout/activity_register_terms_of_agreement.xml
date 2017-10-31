@@ -44,7 +44,7 @@
         <TextView
             android:id="@+id/txtTermsOfAgreement"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@drawable/stroke"
             android:layout_margin="8dp"
             android:padding="8dp"

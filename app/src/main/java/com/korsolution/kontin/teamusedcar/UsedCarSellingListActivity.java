@@ -30,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.korsolution.kontin.teamusedcar.activity.NotificationTentListActivity;
 import com.paginate.Paginate;
 import com.paginate.abslistview.LoadingListItemCreator;
 
@@ -79,6 +80,11 @@ public class UsedCarSellingListActivity extends AppCompatActivity {
     private String CustomerId;
 
     private AccountDBClass AccountDB;
+
+    // Notification on ActionBar
+    static ImageButton btnNotification;
+    static TextView textOne1;
+    static int mNotifCount1 = 10;
 
     static ImageButton btnCar;
     static TextView textOne;
@@ -219,6 +225,23 @@ public class UsedCarSellingListActivity extends AppCompatActivity {
 
             }
         });
+
+        View count1 = menu.findItem(R.id.action_notifications).getActionView();
+        btnNotification = (ImageButton) count1.findViewById(R.id.btnNotification);
+        textOne1 = (TextView) count1.findViewById(R.id.textOne);
+        textOne1.setText(String.valueOf(mNotifCount1));
+        textOne1.setVisibility(View.GONE);
+        btnNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), NotificationTentListActivity.class);
+                intent.putExtra("UserId", UserId);
+                intent.putExtra("CustomerId", CustomerId);
+                startActivity(intent);
+            }
+        });
+
+        new FeedAsynTaskGetNotificationCount(this, textOne1).execute(strWebServiceUrl + "GetNotificationByCustomer", /*"29"*/CustomerId);
 
         return true;
     }

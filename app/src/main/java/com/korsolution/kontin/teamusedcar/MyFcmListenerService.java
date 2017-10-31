@@ -155,7 +155,9 @@ public class MyFcmListenerService extends FirebaseMessagingService {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         Bundle bundle = new Bundle();
-        bundle.putString("MSG", data.get("MSG"));
+        //bundle.putString("MSG", data.get("MSG"));
+        bundle.putString("type", data.get("type"));
+        bundle.putString("car_id", data.get("car_id"));
         intent.putExtras(bundle);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);

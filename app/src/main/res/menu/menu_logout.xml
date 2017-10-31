@@ -4,6 +4,14 @@
     tools:context="com.korsolution.kontin.teamusedcar.TabRegisterActivity">
 
     <item
+        android:id="@+id/action_notifications"
+        android:icon="@drawable/ic_action_notifications"
+        app:actionLayout="@layout/feed_update_count_img_noti"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:title="@string/action_notifications" />
+
+    <item
         android:id="@+id/action_logout"
         android:icon="@drawable/logout_white"
         android:orderInCategory="100"

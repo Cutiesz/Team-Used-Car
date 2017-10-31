@@ -34,6 +34,7 @@ import com.korsolution.kontin.teamusedcar.AccountDBClass;
 import com.korsolution.kontin.teamusedcar.AddUsedCarYoutubeLinkActivity;
 import com.korsolution.kontin.teamusedcar.CuteFeedJsonUtil;
 import com.korsolution.kontin.teamusedcar.DesiredCarListShowroomActivity;
+import com.korsolution.kontin.teamusedcar.FeedAsynTaskGetNotificationCount;
 import com.korsolution.kontin.teamusedcar.LoginActivity;
 import com.korsolution.kontin.teamusedcar.R;
 
@@ -100,6 +101,11 @@ public class ShowroomTabActivity extends AppCompatActivity {
 
     protected ArrayList<JSONObject> feedDataListShowroomDetails;
     protected ArrayList<JSONObject> feedDataListToken;
+
+    // Notification on ActionBar
+    static ImageButton btnNotification;
+    static TextView textOne;
+    static int mNotifCount = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -310,6 +316,24 @@ public class ShowroomTabActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_logout, menu);
+
+        View count = menu.findItem(R.id.action_notifications).getActionView();
+        btnNotification = (ImageButton) count.findViewById(R.id.btnNotification);
+        textOne = (TextView) count.findViewById(R.id.textOne);
+        textOne.setText(String.valueOf(mNotifCount));
+        textOne.setVisibility(View.GONE);
+        btnNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), NotificationShowroomListActivity.class);
+                intent.putExtra("UserId", UserId);
+                intent.putExtra("CustomerId", CustomerId);
+                startActivity(intent);
+            }
+        });
+
+        new FeedAsynTaskGetNotificationCount(this, textOne).execute(strWebServiceUrl + "GetNotificationByCustomer", /*"29"*/CustomerId);
+
         return true;
     }
 

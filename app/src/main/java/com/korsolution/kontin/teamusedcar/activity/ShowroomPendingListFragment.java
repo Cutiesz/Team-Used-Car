@@ -60,6 +60,8 @@ public class ShowroomPendingListFragment extends Fragment {
     private boolean hasLoadedAll = false;
     private int mPageIndex = 1;
 
+    String strWebServiceUrl;
+
 
     public ShowroomPendingListFragment() {
         // Required empty public constructor
@@ -87,6 +89,8 @@ public class ShowroomPendingListFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        strWebServiceUrl = getResources().getString(R.string.webServiceUrlAccount);
 
         setupWidgets(view);
         loadListUsedCar();
@@ -177,7 +181,7 @@ public class ShowroomPendingListFragment extends Fragment {
         //2 = รถที่รอชำระเงิน
         //3 = รถที่ขาย/ประมูลแล้ว
 
-        new FeedAsynTask().execute("http://www.teamusedcar.com/webservices/ws_used_car.asmx/ListShowRoomCarByOwner", "29", "2");
+        new FeedAsynTask().execute(strWebServiceUrl + "ListShowRoomCarByOwner", CustomerId, "2");
     }
 
     public class FeedAsynTask extends AsyncTask<String, Void, String> {

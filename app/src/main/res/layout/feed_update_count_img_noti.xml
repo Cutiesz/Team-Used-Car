@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <ImageButton
+        android:id="@+id/btnNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:minHeight="32dp"
+        android:minWidth="32dp"
+        android:padding="10dp"
+        android:background="@null"
+        android:src="@drawable/ic_action_notifications" />
+
+    <TextView
+        android:id="@+id/textOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/btnNotification"
+        android:background="@drawable/badge_circle"
+        android:text="1"
+        android:textColor="#FFF"
+        android:textSize="8sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
