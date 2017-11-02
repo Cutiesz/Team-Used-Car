@@ -28,7 +28,7 @@
             android:padding="4dp"
             android:text="การแจ้งเตือน"
             android:textColor="@color/Black"
-            android:textSize="18dp" />
+            android:textSize="24dp" />
     </LinearLayout>
 
     <android.support.v4.widget.SwipeRefreshLayout

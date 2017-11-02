@@ -237,6 +237,7 @@ public class UsedCarSellingListActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), NotificationTentListActivity.class);
                 intent.putExtra("UserId", UserId);
                 intent.putExtra("CustomerId", CustomerId);
+                intent.putExtra("Deposit", deposit);
                 startActivity(intent);
             }
         });
@@ -454,7 +455,7 @@ public class UsedCarSellingListActivity extends AppCompatActivity {
 
                             if (data.equals("[]")) {
                                 txtNoData.setVisibility(View.VISIBLE);
-                                txtNoData.setText("ไม่พบรถที่ค้นหา");
+                                txtNoData.setText("ไม่มีรถประมูล");
                             }
 
                             feedDataList = CuteFeedJsonUtil.feed(data);
@@ -593,6 +594,8 @@ public class UsedCarSellingListActivity extends AppCompatActivity {
 
                             //Toast.makeText(getBaseContext(), PKID, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), UsedCarSellingDetailsActivity.class);
+                            intent.putExtra("UserId", UserId);
+                            intent.putExtra("CustomerId", CustomerId);
                             intent.putExtra("PKID", PKID);
                             intent.putExtra("EndDate", dateTime);
                             intent.putExtra("Deposit", deposit);

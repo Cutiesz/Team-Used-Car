@@ -1,5 +1,6 @@
 package com.korsolution.kontin.teamusedcar.activity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.korsolution.kontin.teamusedcar.CuteFeedJsonUtil;
 import com.korsolution.kontin.teamusedcar.R;
+import com.korsolution.kontin.teamusedcar.UsedCarDetailsActivity;
 import com.korsolution.kontin.teamusedcar.adapter.NotificationAdapter;
 import com.paginate.Paginate;
 import com.paginate.abslistview.LoadingListItemCreator;
@@ -43,6 +45,7 @@ public class NotificationShowroomListActivity extends AppCompatActivity {
 
     protected ArrayList<JSONObject> feedDataList;
     protected ArrayList<JSONObject> feedDataListNoti;
+    protected ArrayList<JSONObject> feedDataListNotificationRead;
 
     final int delay = 1000;
     private boolean mIsLoading = true;
@@ -97,7 +100,47 @@ public class NotificationShowroomListActivity extends AppCompatActivity {
                         String car_id = String.valueOf(feedDataList.get(position).getString("car_id"));
                         String is_read = String.valueOf(feedDataList.get(position).getString("is_read"));
 
-                        //
+                        new FeedAsynTaskMakeNotificationRead().execute(strWebServiceUrl + "MakeNotificationRead", pkid);
+
+                        /* type
+                        รถเข้าใหม่ = 1,//send to all tent
+                        มีการซื้อรถ = 2,//send to showroom
+                        มีการบิด = 3,//send to showroom
+                        ชนะการประมูล = 4,//send to tent
+                        จบประมูล = 5, //send to showroom
+                        ถ่ายรูปส่งสลิป = 6, //send to shoroom
+                        ชำระสำเร็จ = 7, //send to tent
+                        */
+
+                        switch (type) {
+                            case "2":
+
+                                break;
+                            case "3":
+
+                                break;
+                            case "5":
+
+                                break;
+                            case "6":
+
+                                break;
+                            default:
+                                Intent intent = new Intent(getApplicationContext(), ShowroomTabActivity.class);
+                                intent.putExtra("UserId", UserId);
+                                intent.putExtra("CustomerId", CustomerId);
+                                startActivity(intent);
+                                break;
+                        }
+
+                        Intent intent = new Intent(NotificationShowroomListActivity.this, UsedCarDetailsActivity.class);
+                        intent.putExtra("UserId", UserId);
+                        intent.putExtra("CustomerId", CustomerId);
+                        intent.putExtra("PKID", car_id);
+                        intent.putExtra("Approve", "");
+                        intent.putExtra("AuctionStatus", "");
+                        intent.putExtra("sendFrom", "notificationList");
+                        startActivity(intent);
 
                     } catch (Exception e) {
 
@@ -309,6 +352,124 @@ public class NotificationShowroomListActivity extends AppCompatActivity {
         @Override
         public void bindView(int position, View view) {
             // Bind custom loading row if needed
+        }
+    }
+
+    public class FeedAsynTaskMakeNotificationRead extends AsyncTask<String, Void, String> {
+
+        //private ProgressDialog nDialog;
+
+        /*@Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            nDialog = new ProgressDialog(NotificationShowroomListActivity.this);
+            nDialog.setMessage("Loading..");
+            //nDialog.setTitle("Checking Network");
+            nDialog.setIndeterminate(false);
+            nDialog.setCancelable(true);
+            nDialog.show();
+
+        }*/
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            try{
+
+                // 1. connect server with okHttp
+                OkHttpClient client = new OkHttpClient.Builder()
+                        .connectTimeout(10, TimeUnit.SECONDS)
+                        .writeTimeout(10, TimeUnit.SECONDS)
+                        .readTimeout(30, TimeUnit.SECONDS)
+                        .build();
+
+
+                // 2. assign post data
+                RequestBody postData = new FormBody.Builder()
+                        //.add("username", "admin")
+                        //.add("password", "password")
+                        .add("noti_id", params[1])
+                        .build();
+
+                Request request = new Request.Builder()
+                        .url(params[0])
+                        .post(postData)
+                        .build();
+
+                // 3. transport request to server
+                okhttp3.Response response = client.newCall(request).execute();
+                String result = response.body().string();
+
+                return result;
+
+            } catch (Exception e){
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if (s != null) {
+                //Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+
+                // <string xmlns="http://tempuri.org/">{ "Success": true }</string>
+                // { "Success": false, "Msg": "An error occurred while updating the entries. See the inner exception for details." }
+
+                s = s.replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "");
+                s = s.replace("<string xmlns=\"http://tempuri.org/\">", "");
+                s = s.replace("</string>", "");
+                s = "[" + s + "]";
+
+                feedDataListNotificationRead = CuteFeedJsonUtil.feed(s);
+                if (feedDataListNotificationRead != null) {
+                    for (int i = 0; i <= feedDataListNotificationRead.size(); i++) {
+                        // Success
+                        try {
+
+                            String status = String.valueOf(feedDataListNotificationRead.get(i).getString("status"));
+
+                            if (status.equals("ok")) {
+
+                                //
+
+                            } else {
+                                //
+                            }
+
+
+                        } catch (Exception e) {
+
+                        }
+
+                        // Fail
+                        try {
+
+                            String status = String.valueOf(feedDataListNotificationRead.get(i).getString("status"));
+                            String msg = String.valueOf(feedDataListNotificationRead.get(i).getString("msg"));
+
+                            if (status.equals("error")) {
+
+                                //
+
+                            }
+
+
+                        } catch (Exception e) {
+
+                        }
+                    }
+
+                } else {
+                    //Toast.makeText(getApplicationContext(), "No Data!!", Toast.LENGTH_LONG).show();
+                }
+
+            } else {
+                //Toast.makeText(getApplicationContext(), "Fail!!", Toast.LENGTH_LONG).show();
+            }
+
+            //nDialog.dismiss();
         }
     }
 }

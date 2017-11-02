@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.korsolution.kontin.teamusedcar.activity.NotificationTentListActivity;
 import com.korsolution.kontin.teamusedcar.activity.ShowroomTabActivity;
 
 import java.util.Timer;
@@ -86,10 +87,10 @@ public class MainActivity extends AppCompatActivity {
 
                                 switch (SupplierType) {
                                     case "SHOWROOM":
-                                        Intent intent = new Intent(getApplicationContext(), AddUsedCarYoutubeLinkActivity.class);
+                                        //Intent intent = new Intent(getApplicationContext(), UsedCarListActivity.class);
+                                        Intent intent = new Intent(getApplicationContext(), ShowroomTabActivity.class);
                                         intent.putExtra("UserId", UserId);
                                         intent.putExtra("CustomerId", CustomerId);
-                                        intent.putExtra("valueGetIntent", valueGetIntent);
                                         startActivity(intent);
                                         break;
                                     case "TENT":
@@ -118,17 +119,47 @@ public class MainActivity extends AppCompatActivity {
 
                                 switch (SupplierType) {
                                     case "SHOWROOM":
-                                        Intent intent = new Intent(getApplicationContext(), AddUsedCarYoutubeLinkActivity.class);
+
+                                        Intent intent = new Intent(MainActivity.this, UsedCarDetailsActivity.class);
                                         intent.putExtra("UserId", UserId);
                                         intent.putExtra("CustomerId", CustomerId);
-                                        intent.putExtra("valueGetIntent", car_id);
+                                        intent.putExtra("PKID", car_id);
+                                        intent.putExtra("Approve", "");
+                                        intent.putExtra("AuctionStatus", "");
+                                        intent.putExtra("sendFrom", "notificationList");
                                         startActivity(intent);
+
                                         break;
                                     case "TENT":
-                                        Intent intent1 = new Intent(getApplicationContext(), UsedCarSellingListActivity.class);
-                                        intent1.putExtra("UserId", UserId);
-                                        intent1.putExtra("CustomerId", CustomerId);
-                                        startActivity(intent1);
+
+                                        switch (type) {
+                                            case "1":
+                                                Intent intent2 = new Intent(getApplicationContext(), NotificationTentListActivity.class);
+                                                intent2.putExtra("UserId", UserId);
+                                                intent2.putExtra("CustomerId", CustomerId);
+                                                intent2.putExtra("Deposit", "");
+                                                startActivity(intent2);
+                                                break;
+                                            case "4":
+                                                Intent intent4 = new Intent(getApplicationContext(), BuyHistoryActivity.class);
+                                                intent4.putExtra("UserId", UserId);
+                                                intent4.putExtra("CustomerId", CustomerId);
+                                                startActivity(intent4);
+                                                break;
+                                            case "7":
+                                                Intent intent7 = new Intent(getApplicationContext(), BuyHistoryActivity.class);
+                                                intent7.putExtra("UserId", UserId);
+                                                intent7.putExtra("CustomerId", CustomerId);
+                                                startActivity(intent7);
+                                                break;
+                                            default:
+                                                Intent intent1 = new Intent(getApplicationContext(), UsedCarSellingListActivity.class);
+                                                intent1.putExtra("UserId", UserId);
+                                                intent1.putExtra("CustomerId", CustomerId);
+                                                startActivity(intent1);
+                                                break;
+                                        }
+
                                         break;
                                 }
                             } else {

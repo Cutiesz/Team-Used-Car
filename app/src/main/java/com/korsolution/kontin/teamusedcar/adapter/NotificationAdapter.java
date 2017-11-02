@@ -1,12 +1,14 @@
 package com.korsolution.kontin.teamusedcar.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.korsolution.kontin.teamusedcar.R;
@@ -31,11 +33,13 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
+        RelativeLayout layout1;
         TextView txtNotification;
 
         public ViewHolder(View view) {
             super(view);
 
+            layout1 = (RelativeLayout) view.findViewById(R.id.layout1);
             txtNotification = (TextView) view.findViewById(R.id.txtNotification);
         }
     }
@@ -62,6 +66,18 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                 String is_read = String.valueOf(feedDataList.get(position).getString("is_read"));
 
                 holder.txtNotification.setText(text);
+
+                switch (is_read) {
+                    case "true":
+                        holder.layout1.setBackgroundColor(Color.LTGRAY);
+                        break;
+                    case "false":
+                        holder.layout1.setBackgroundColor(Color.WHITE);
+                        break;
+                    default:
+                        holder.layout1.setBackgroundColor(Color.WHITE);
+                        break;
+                }
 
             } catch (Exception e) {
 

@@ -82,6 +82,7 @@ public class UsedCarSellingDetailsActivity extends AppCompatActivity {
     private String managementFee;
 
     protected ArrayList<JSONObject> feedDataList;
+    protected ArrayList<JSONObject> feedDataListTentDetail;
 
     private AccountDBClass AccountDB;
 
@@ -97,6 +98,9 @@ public class UsedCarSellingDetailsActivity extends AppCompatActivity {
 
     private CarColorDBClass CarColorDB;
     protected ArrayList<JSONObject> feedDataListColor;
+
+    private String UserId;
+    private String CustomerId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,6 +118,8 @@ public class UsedCarSellingDetailsActivity extends AppCompatActivity {
         //getSupportActionBar().setDisplayShowHomeEnabled(true);
         //getSupportActionBar().setIcon(R.mipmap.ic_launcher);
 
+        UserId = getIntent().getStringExtra("UserId");
+        CustomerId = getIntent().getStringExtra("CustomerId");
         PKID = getIntent().getStringExtra("PKID");
         EndDate = getIntent().getStringExtra("EndDate");
         Deposit = getIntent().getStringExtra("Deposit");
@@ -122,6 +128,8 @@ public class UsedCarSellingDetailsActivity extends AppCompatActivity {
         CarColorDB = new CarColorDBClass(this);
 
         strWebServiceUrl = getResources().getString(R.string.webServiceUrlAccount);
+
+        new FeedAsynTaskGetTentDetail().execute(strWebServiceUrl + "GetTentDetail", CustomerId);
 
         setupWidgets();
 
@@ -277,13 +285,7 @@ public class UsedCarSellingDetailsActivity extends AppCompatActivity {
 
     private void loadUsedCarDetails() {
 
-        String[][] arrData = AccountDB.SelectAllAccount();
-        if (arrData != null) {
-            String UserId = arrData[0][1].toString();
-            String CustomerId = arrData[0][2].toString();
-
-            new FeedAsynTask().execute(strWebServiceUrl + "GetCarDetail", CustomerId, PKID);
-        }
+        new FeedAsynTask().execute(strWebServiceUrl + "GetCarDetail", CustomerId, PKID);
     }
 
     public class FeedAsynTask extends AsyncTask<String, Void, String> {
@@ -1319,6 +1321,102 @@ public class UsedCarSellingDetailsActivity extends AppCompatActivity {
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             ((ViewPager) container).removeView((ImageView) object);
+        }
+    }
+
+    public class FeedAsynTaskGetTentDetail extends AsyncTask<String, Void, String> {
+
+        private ProgressDialog nDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            nDialog = new ProgressDialog(UsedCarSellingDetailsActivity.this);
+            nDialog.setMessage("Loading..");
+            //nDialog.setTitle("Checking Network");
+            nDialog.setIndeterminate(false);
+            nDialog.setCancelable(true);
+            nDialog.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            try{
+
+                // 1. connect server with okHttp
+                OkHttpClient client = new OkHttpClient.Builder()
+                        .connectTimeout(10, TimeUnit.SECONDS)
+                        .writeTimeout(10, TimeUnit.SECONDS)
+                        .readTimeout(30, TimeUnit.SECONDS)
+                        .build();
+
+
+                // 2. assign post data
+                RequestBody postData = new FormBody.Builder()
+                        .add("customerId", params[1])
+                        .build();
+
+                Request request = new Request.Builder()
+                        .url(params[0])
+                        .post(postData)
+                        .build();
+
+                // 3. transport request to server
+                okhttp3.Response response = client.newCall(request).execute();
+                String result = response.body().string();
+
+                return result;
+
+            } catch (Exception e){
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            if (s != null) {
+                //Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+
+                s = s.replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "");
+                s = s.replace("<string xmlns=\"http://tempuri.org/\">", "");
+                s = s.replace("</string>", "");
+                s = "[" + s + "]";
+
+                feedDataListTentDetail = CuteFeedJsonUtil.feed(s);
+                if (feedDataListTentDetail != null) {
+                    for (int i = 0; i <= feedDataListTentDetail.size(); i++) {
+                        try {
+
+                            String status = String.valueOf(feedDataListTentDetail.get(i).getString("status"));
+                            String data = String.valueOf(feedDataListTentDetail.get(i).getString("data"));
+
+                            ArrayList<JSONObject> feedDataListData = CuteFeedJsonUtil.feed("[" + data + "]");
+                            if (feedDataListData != null) {
+                                for (int j = 0; j <= feedDataListData.size(); j++) {
+                                    String showroom = String.valueOf(feedDataListData.get(j).getString("showroom"));
+                                    String star = String.valueOf(feedDataListData.get(j).getString("star"));
+                                    String balance = String.valueOf(feedDataListData.get(j).getString("balance"));
+                                    String car_bid = String.valueOf(feedDataListData.get(j).getString("car_bid"));
+
+                                    Deposit = balance;
+                                }
+                            }
+
+                        } catch (Exception e) {
+
+                        }
+                    }
+                }
+
+            } else {
+                Toast.makeText(getApplicationContext(), "Fail!!", Toast.LENGTH_LONG).show();
+            }
+
+            nDialog.dismiss();
         }
     }
 }
