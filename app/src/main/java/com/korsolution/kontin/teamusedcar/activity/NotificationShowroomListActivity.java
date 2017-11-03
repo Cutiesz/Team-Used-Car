@@ -8,6 +8,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -471,5 +472,21 @@ public class NotificationShowroomListActivity extends AppCompatActivity {
 
             //nDialog.dismiss();
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            System.out.println("KEYCODE_BACK");
+
+            //moveTaskToBack(true);
+
+            Intent intent = new Intent(getApplicationContext(), ShowroomTabActivity.class);
+            intent.putExtra("UserId", UserId);
+            intent.putExtra("CustomerId", CustomerId);
+            startActivity(intent);
+        }
+        return false;
     }
 }

@@ -15,6 +15,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ import android.widget.Toast;
 
 import com.anton46.stepsview.StepsView;
 import com.bumptech.glide.Glide;
+import com.korsolution.kontin.teamusedcar.activity.ShowroomTabActivity;
 import com.korsolution.kontin.teamusedcar.activity.SlideshowDialogFragment;
 
 import org.json.JSONObject;
@@ -1483,5 +1485,28 @@ public class UsedCarDetailsActivity extends AppCompatActivity {
 
             //nDialog.dismiss();
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            System.out.println("KEYCODE_BACK");
+
+            //moveTaskToBack(true);
+
+            if (sendFrom.equals("tentHistory")) {
+                Intent intent = new Intent(getApplicationContext(), BuyHistoryActivity.class);
+                intent.putExtra("UserId", UserId);
+                intent.putExtra("CustomerId", CustomerId);
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(getApplicationContext(), ShowroomTabActivity.class);
+                intent.putExtra("UserId", UserId);
+                intent.putExtra("CustomerId", CustomerId);
+                startActivity(intent);
+            }
+        }
+        return false;
     }
 }
