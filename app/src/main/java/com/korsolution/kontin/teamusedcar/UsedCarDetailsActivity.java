@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -79,6 +80,7 @@ public class UsedCarDetailsActivity extends AppCompatActivity {
     private TextView txtStatus;
     private TextView txtBid;
     private LinearLayout layoutBuyPrice;
+    private ImageView imgYoutubeThumbnail;
 
     private StepsView mStepsView;
 
@@ -342,6 +344,7 @@ public class UsedCarDetailsActivity extends AppCompatActivity {
         txtProp = (TextView) findViewById(R.id.txtProp);
         txtManagementFee = (TextView) findViewById(R.id.txtManagementFee);
         txtDeliveryCost = (TextView) findViewById(R.id.txtDeliveryCost);
+        imgYoutubeThumbnail = (ImageView) findViewById(R.id.imgYoutubeThumbnail);
 
         mStepsView = (StepsView) findViewById(R.id.stepsView);
 
@@ -496,6 +499,7 @@ public class UsedCarDetailsActivity extends AppCompatActivity {
                                             final String img_inner3 = String.valueOf(feedDataListCar.get(j).getString("img_inner3"));
                                             final String img_inner4 = String.valueOf(feedDataListCar.get(j).getString("img_inner4"));
                                             final String img_inner5 = String.valueOf(feedDataListCar.get(j).getString("img_inner5"));
+                                            final String youtube_url = String.valueOf(feedDataListCar.get(j).getString("youtube_url"));
 
                                             //mImages = new String[11];
                                             mImages[0] = img_front;
@@ -824,6 +828,25 @@ public class UsedCarDetailsActivity extends AppCompatActivity {
                                                     goViewImages(10);
                                                 }
                                             });
+
+                                            if (youtube_url.length() > 0) {
+
+                                                try {
+
+                                                    setImgThumbnail(youtube_url);
+
+                                                } catch (Exception e) {
+
+                                                }
+
+                                                imgYoutubeThumbnail.setOnClickListener(new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View v) {
+
+                                                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(youtube_url)));
+                                                    }
+                                                });
+                                            }
                                         }
                                     }
 
@@ -1485,6 +1508,22 @@ public class UsedCarDetailsActivity extends AppCompatActivity {
 
             //nDialog.dismiss();
         }
+    }
+
+    private void setImgThumbnail(String youtubeID) {
+
+        youtubeID = getVideoId(youtubeID);
+
+        final String youtubeThumnailURL = String.format("http://img.youtube.com/vi/%s/hqdefault.jpg", youtubeID);
+
+        Glide.with(UsedCarDetailsActivity.this)
+                .load(youtubeThumnailURL)
+                .into(imgYoutubeThumbnail);
+    }
+
+    public static String getVideoId(String watchLink){
+
+        return watchLink.substring(watchLink.length() - 11);
     }
 
     @Override
